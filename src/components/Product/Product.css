@@ -1,12 +1,22 @@
 .product-container img{
     Width :286px;
     Height :286px;
-    
+    border-radius: 8px;
+    margin: 8px;
 }
 .product{
-    border: 2px solid orange;
+    border: 2px solid #95A0A7; 
+    border-radius: 10px;
     width: 300px;
     height: 508px;
+    /* text-align: center; */
+    /* padding: 7px; */
+    position: relative;
+}
+
+.product-info p{
+    margin: 0 14px;
+    margin-top: 5px;
 }
 
 .product-name{
@@ -16,6 +26,19 @@
     font-size: 21px;
     line-height: 25px;
     letter-spacing: 0.0015em;
-
     color: #0E161A;
+}
+
+.btn-cart{
+    width: 100%;
+    background: #FFE0B3;
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    bottom: 0;
+}
+
+.btn-cart:hover{
+    background-color: orange;
 }
