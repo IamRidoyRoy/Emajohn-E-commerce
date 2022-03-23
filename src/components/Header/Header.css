@@ -1,0 +1,21 @@
+.menu{
+    background-color: #1C2B35;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding-left: 140px;
+    padding-right: 140px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    margin-left: 36px;    
+}
+
+.menu a:hover{
+    text-decoration:underline;
+    color: orange;
+}
