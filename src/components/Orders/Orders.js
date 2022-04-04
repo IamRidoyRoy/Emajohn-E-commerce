@@ -3,11 +3,13 @@ import useCart from '../Hooks/useCart';
 import UseProducts from '../Hooks/UseProducts';
 import Cart from '../Cart/Cart'
 import ReviewItem from '../ReviewItem/ReviewItem';
+import { Link, useNavigate } from 'react-router-dom';
+import './Orders.css'
 
 const Orders = () => {
     const [products, setProducts] = UseProducts()
     const [cart, setCart] = useCart(products)
-
+    const navigate = useNavigate();
     const handleRemoveProduct = (product) => {
         const rest = cart.filter(pd => pd.id !== product.id)
         setCart(rest)
@@ -18,7 +20,7 @@ const Orders = () => {
             <h2>We have carted product: {cart.length}</h2>
 
             <div className='shop-container'>
-                <div className=''>
+                <div className='ordered-item-Container'>
                     {
                         cart.map(product => <ReviewItem
                             key={product.id}
@@ -28,7 +30,12 @@ const Orders = () => {
                     }
                 </div>
                 <div className='cart-container'>
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        {/* <Link to='/inventory'>
+                            <button>Proceed Product</button>
+                        </Link> */}
+                        <button onClick={() => navigate('/inventory')}>Proceed Product</button>
+                    </Cart>
                 </div>
             </div>
         </div>
