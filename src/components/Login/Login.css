@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    box-shadow: 10px 5px 5px #FFE0B3;
 }
 
 .form-header {
@@ -40,6 +41,7 @@
     border-radius: 8px;
     width: 400px;
     height: 43px;
+    font-size: 20px;
 }
 
 .login-btn {
@@ -51,6 +53,12 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.login-btn:hover {
+    background: rgba(218, 135, 10, 0.842);
 }
 
 .new-to-emajohn {
@@ -64,4 +72,29 @@
 
 .new-to-emajohn a {
     color: #FF9900;
+}
+
+.hr-container hr {
+
+    text-align: center;
+
+
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.btn-container p {
+    margin-right: 20px;
+}
+
+.btn-container button {
+    border-radius: 8px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
 }
