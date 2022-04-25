@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Shipping = () => {
     const [email, setEmail] = useState('');
-    const [error, setError] = useState('');
+    const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
-
+    const [user] = useAuthState(auth);
     const handleNameBlur = event => {
-        setEmail(event.target.value);
+        setName(event.target.value);
         console.log(email)
     }
 
-    const handleEmailBlur = event => {
-        setEmail(event.target.value)
-    }
+
     const handlePhoneBlur = event => {
         setPhone(event.target.value)
     }
-    const handleCreateUser = event => {
+    const handleFormSubmit = event => {
         event.preventDefault();
+        const shipping = { name, email, address, phone };
+        console.log(shipping);
 
     }
     const handleAddressBlur = (event) => {
@@ -31,14 +34,14 @@ const Shipping = () => {
 
             <div >
                 <h1 className='form-header'>Shipping Product</h1>
-                <form onSubmit={handleCreateUser}>
+                <form onSubmit={handleFormSubmit}>
                     <div className="input-group">
                         <label htmlFor='email'>Name</label>
                         <input onBlur={handleNameBlur} type="text" name="" id="" required />
                     </div>
                     <div className="input-group">
                         <label htmlFor='password'>Your email</label>
-                        <input onBlur={handleEmailBlur} type="email" required />
+                        <input value={user?.email} readOnly type="email" required />
                     </div>
                     <div className="input-group">
                         <label htmlFor='password'>Addresss</label>
@@ -46,7 +49,7 @@ const Shipping = () => {
                     </div>
                     <div className="input-group">
                         <label htmlFor='password'>Phone</label>
-                        <input onBlur={handlePhoneBlur} type="number" required />
+                        <input onBlur={handlePhoneBlur} type="phone" required />
                     </div>
                     <p style={{ color: 'red' }}>{error}</p>
                     <button className='login-btn' type='submit'>Shipping</button>
