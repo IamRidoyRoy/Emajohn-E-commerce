@@ -1,14 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init'
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-
+    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth)
     const handleEmailBlur = event => {
         setEmail(event.target.value);
         console.log(email)
@@ -26,6 +28,15 @@ const Signup = () => {
             setError("Your password did not match!");
             return;
         }
+        if (pass.length < 6) {
+            setError('Password must be 6 character or Longer')
+            return;
+        }
+        createUserWithEmailAndPassword(email, pass)
+    }
+    // If new user is created it will go to shop
+    if (user) {
+        navigate('/shop');
     }
     return (
         <div className='form-container'>
@@ -39,11 +50,11 @@ const Signup = () => {
                     </div>
                     <div className="input-group">
                         <label htmlFor='password'>Password</label>
-                        <input type="password" required />
+                        <input onBlur={handlePass} type="password" required />
                     </div>
                     <div className="input-group">
                         <label htmlFor='password'>Confirm-Password</label>
-                        <input type="password" required />
+                        <input onBlur={handleConfirmPass} type="password" required />
                     </div>
                     <p style={{ color: 'red' }}>{error}</p>
                     <button className='login-btn' type='submit'>SignUp</button>
