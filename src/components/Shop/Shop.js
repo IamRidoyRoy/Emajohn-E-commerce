@@ -47,7 +47,7 @@ const Shop = () => {
                         <Product
 
                             product={product}
-                            key={product.id}
+                            key={product._id}
                             handleAddToCart={handleAddToCart}
                         >
 

@@ -11,14 +11,14 @@
 10. useSignInWithEmailAndPassword for sign in
 11. Create RequireAuth component >> Check user existence 
 12. In Route wrap prorected component using RequireAuth 
-13.  
+
 */
 
 /*
 --> Firebase Hosting Steps:
-1. npm install -g firebase-tools
+1. npm install -g firebase-tools (One time for pc)
 2. firebase login
 3. firebase init
-4. firebase deploy
-
+4. npm run build
+5. firebase deploy
 */
