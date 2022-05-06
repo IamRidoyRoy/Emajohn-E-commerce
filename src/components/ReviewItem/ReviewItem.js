@@ -4,7 +4,7 @@ import React from 'react';
 import './ReviewItem.css'
 const ReviewItem = (props) => {
     const { product, handleRemoveProduct } = props
-    const { img, name, price, shipping } = product
+    const { img, name, price, shipping, quantity } = product
     return (
         <div className='allProduct'>
             <div className="img-container">
@@ -16,6 +16,8 @@ const ReviewItem = (props) => {
                         Name: {name.length > 20 ? name.slice(0, 20) + '... ' : name}</h4>
                     <p>Price: ${price}</p>
                     <p>Shipping charge: {shipping}</p>
+                    <p>Quantity:{quantity}</p>
+
                 </div>
                 <div className="delete-container">
                     <button onClick={() => handleRemoveProduct(product)}>
