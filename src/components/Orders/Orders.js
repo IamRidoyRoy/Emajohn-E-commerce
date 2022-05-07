@@ -8,7 +8,7 @@ import './Orders.css'
 
 const Orders = () => {
     const [products, setProducts] = UseProducts()
-    const [cart, setCart] = useCart(products)
+    const [cart, setCart] = useCart();
     const navigate = useNavigate();
     const handleRemoveProduct = (product) => {
         const rest = cart.filter(pd => pd._id !== product._id)
@@ -31,9 +31,7 @@ const Orders = () => {
                 </div>
                 <div className='cart-container'>
                     <Cart cart={cart}>
-                        {/* <Link to='/inventory'>
-                            <button>Proceed Product</button>
-                        </Link> */}
+
                         <button onClick={() => navigate('/shipping')}>Proceed Product</button>
                     </Cart>
                 </div>

@@ -5,9 +5,10 @@ import Product from '../Product/Product';
 import UseProducts from '../Hooks/UseProducts';
 import './Shop.css'
 import { Link } from 'react-router-dom';
+import useCart from '../Hooks/useCart';
 const Shop = () => {
     // const [products] = UseProducts()
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useCart();
     const [productPages, setproductPages] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
@@ -30,20 +31,7 @@ const Shop = () => {
             })
     }, [])
 
-    useEffect(() => {
-        const storedCart = getStoredCart();
-        // console.log(storedCart);
-        const savedCart = [];
-        for (const id in storedCart) {
-            const addedProduct = products.find(product => product._id === id)
-            if (addedProduct) {
-                const quantity = storedCart[id];
-                addedProduct.quantity = quantity;
-                savedCart.push(addedProduct);
-            }
-        }
-        setCart(savedCart);
-    }, [products])
+
     const handleAddToCart = (selectProduct) => {
         let newCart = [];
         const exists = cart.find(product => product._id === selectProduct._id);
